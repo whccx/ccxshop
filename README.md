@@ -1,8 +1,8 @@
 
-*amqp==2.3.2
-*billiard==3.5.0.4
-*celery==4.2.1
-*Django==1.11.15
+  amqp==2.3.2
+  billiard==3.5.0.4
+  celery==4.2.1
+  Django==1.11.15
 *django-jquery==3.1.0
 *django-bootstrap3==11.0.0
 *django-celery-results==1.0.1
