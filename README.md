@@ -1,5 +1,4 @@
----
-####虚拟环境pip安装库:
+#### 虚拟环境pip安装库:
 ``pip install -r requirements.txt``
 - amqp==2.3.2
 - billiard==3.5.0.4
@@ -18,7 +17,7 @@
 - pytz==2018.5
 - vine==1.1.4
 
----
+
 ```python
 class test(object):
     def get(request):
