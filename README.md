@@ -1,5 +1,5 @@
 #### 虚拟环境pip安装库:
-``pip install -r requirements.txt``
+####```pip install -r requirements.txt```
 - amqp==2.3.2
 - billiard==3.5.0.4
 - celery==4.2.1
