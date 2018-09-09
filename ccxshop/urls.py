@@ -10,10 +10,10 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    #网站icon
-    path('favicon.ico',RedirectView.as_view(url='static/favicon.ico')),
-
-    path('admin/', admin.site.urls),
-    path('', views.index),
-    path('shop/', include('shop.urls',namespace='shop')),
+    path('favicon.ico',RedirectView.as_view(url='static/favicon.ico')),#网站icon
+    path('admin/', admin.site.urls),#后台
+    path('', views.index), #首页
+    path('shop/', include('shop.urls',namespace='shop')),#商品app链接
 ]
+
+
