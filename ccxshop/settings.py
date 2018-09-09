@@ -29,8 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #===应用添加====
-    'shop',
+    #===应用模块添加====
+    'shop', #商品
 ]
 
 MIDDLEWARE = [

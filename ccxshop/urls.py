@@ -4,13 +4,16 @@ from __future__ import unicode_literals
 #网站ico
 from django.views.generic.base import RedirectView
 
-from django.conf.urls import url,include
+from django.urls import path,include
 from django.contrib import admin
 
-urlpatterns = [
-    #网站ico
-    url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
+from . import views
 
-    url(r'^admin/', admin.site.urls),
-    url(r'^shop/', include('shop.urls',namespace='shop')),
+urlpatterns = [
+    #网站icon
+    path('favicon.ico',RedirectView.as_view(url='static/favicon.ico')),
+
+    path('admin/', admin.site.urls),
+    path('', views.index),
+    path('shop/', include('shop.urls',namespace='shop')),
 ]
