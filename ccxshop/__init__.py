@@ -1,3 +1,3 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 import pymysql
 pymysql.install_as_MySQLdb()

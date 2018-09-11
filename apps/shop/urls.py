@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.urls import path,include
-from shop import serializers,views #导入py文件
+from django.conf.urls import url,include
+from shop import views #导入py文件
+from rest_framework.urlpatterns import format_suffix_patterns
 app_name = 'shop'
 
-from rest_framework import routers
-
-#REST路由
-router = routers.DefaultRouter()
-router.register('goods', serializers.ShopViewSet)
-
 urlpatterns = [
-    path('goods', views.goods_list),#全部展示
-    path('goods/(?P<pk>[0-9]+)/', views.goods_detail),#指定id
-    path('', include(router.urls)),#默认shop页面
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')), #Web API
+    url(r'^$', views.shopin),#默认shop页面
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')), #Web API
+    url(r'^goods/$', views.GoodsList.as_view()),
+    url(r'^goods/(?P<pk>[0-9]+)$', views.GoodsDetail.as_view()),
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)

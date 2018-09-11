@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
+@api_view(['GET'])
 def index(request):
-	return render(request,'index.html')
+	show = {'商品':'http://127.0.0.1:8000/shop',}
+	return Response(show)

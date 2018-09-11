@@ -38,8 +38,11 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        #适用于添加身份验证和权限以后
+        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10
 }
 
 
@@ -84,7 +87,7 @@ DATABASES = {
         'NAME': 'ccxshop',
         'HOST':'127.0.0.1',
         'PORT':3306,
-        'USER':'ccx',
+        'USER':'root',
         'PASSWORD':'ccxcsysky',
     }
 }

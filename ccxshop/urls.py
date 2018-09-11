@@ -3,17 +3,16 @@ from __future__ import unicode_literals
 
 #网站ico
 from django.views.generic.base import RedirectView
-
-from django.urls import path,include
+from django.conf.urls import url,include
 from django.contrib import admin
 
 from . import views
 
 urlpatterns = [
-    path('favicon.ico',RedirectView.as_view(url='static/favicon.ico')),#网站icon
-    path('admin/', admin.site.urls),#后台
-    path('', views.index), #首页
-    path('shop/', include('shop.urls',namespace='shop')),#商品app链接
+    url(r'^favicon.ico$',RedirectView.as_view(url='static/favicon.ico')),#网站icon
+    url(r'^admin/', admin.site.urls),#后台
+    url(r'^$', views.index), #首页
+    url(r'^shop/', include('shop.urls'))
 ]
 
 
