@@ -16,9 +16,6 @@ class GoodsDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ShopSerializer
 
 
-
-
-
 #====================================================================
 
 
