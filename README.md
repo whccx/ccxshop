@@ -1,3 +1,5 @@
+本人学习Django的第二个项目，bug较多，客官请路过直走即可！
+
 #### 虚拟环境pip安装库:
 * * *
 ```pip install -r requirements.txt```
