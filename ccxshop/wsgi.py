@@ -1,16 +1,31 @@
-"""
-WSGI config for ccxshop project.
+#!/usr/bin/env python
+# coding: utf-8
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+# import os
+# import sys
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
-"""
+# # 将系统的编码设置为UTF8
+# reload(sys)
+# sys.setdefaultencoding('utf8')
+
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ccxshop.settings")
+
+# from django.core.handlers.wsgi import WSGIHandler
+# application = WSGIHandler()
+
 
 import os
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+path = '/home/ccx/project/ccxshop-local/ccxshop'  # use your own username here
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'ccxshop.settings'
 
 from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ccxshop.settings")
-
-application = get_wsgi_application()
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())

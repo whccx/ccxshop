@@ -11,6 +11,9 @@ LEXERS = [item for item in get_all_lexers() if item[1]]
 LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
 STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 
 class Goods(models.Model):
     goods_sn = models.CharField(max_length=50, default="", verbose_name="商品唯一货号")
@@ -22,6 +25,8 @@ class Goods(models.Model):
     ship_free = models.BooleanField(default=True, verbose_name="是否包邮")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+    owner = models.ForeignKey('auth.User', related_name='shop', on_delete=models.CASCADE)
+    highlighted = models.TextField()
 
     class Meta:
         ordering = ('goods_sn',)
@@ -30,3 +35,15 @@ class Goods(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        """
+        保存模型时，使用pygments代码突出显示库填充突出显示的字段。
+        """
+        lexer = get_lexer_by_name(self.language)
+        linenos = 'table' if self.linenos else False
+        options = {'title': self.title} if self.title else {}
+        formatter = HtmlFormatter(style=self.style, linenos=linenos,
+                                  full=True, **options)
+        self.highlighted = highlight(self.code, lexer, formatter)
+        super(Goods, self).save(*args, **kwargs)

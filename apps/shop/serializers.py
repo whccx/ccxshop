@@ -6,7 +6,9 @@ from shop.models import Goods
 
 # Serializers 定义API.
 class ShopSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
+        owner = serializers.ReadOnlyField(source='owner.username')
         model = Goods
         fields = (
             'id',
@@ -25,3 +27,13 @@ class ShopSerializer(serializers.HyperlinkedModelSerializer):
 class ShopViewSet(viewsets.ModelViewSet):
     queryset = Goods.objects.all()
     serializer_class = ShopSerializer
+
+
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    shop = serializers.PrimaryKeyRelatedField(many=True, queryset=Goods.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'shop')

@@ -15,9 +15,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'x6t!q2ecc(k%h=!fws57w%om^&my$z&ei#9vvx1m0cj9vi!3^9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +42,7 @@ REST_FRAMEWORK = {
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAdminUser',
     ],
-    'PAGE_SIZE': 10
+    #'PAGE_SIZE': 10
 }
 
 
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     #====调试模式关闭csrf认证==============
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -63,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         #===这里修改了django默认的模板html路径=======
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,10 +123,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+#或相对路径
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 静态资源路径 (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+
 # 添加静态资源路径 --------BASE_DIR 是项目的绝对地址
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
