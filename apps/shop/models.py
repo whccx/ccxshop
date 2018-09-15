@@ -25,6 +25,8 @@ class Goods(models.Model):
     ship_free = models.BooleanField(default=True, verbose_name="是否包邮")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
+    style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     owner = models.ForeignKey('auth.User', related_name='shop', on_delete=models.CASCADE)
     highlighted = models.TextField()
 
@@ -41,9 +43,9 @@ class Goods(models.Model):
         保存模型时，使用pygments代码突出显示库填充突出显示的字段。
         """
         lexer = get_lexer_by_name(self.language)
-        linenos = 'table' if self.linenos else False
-        options = {'title': self.title} if self.title else {}
+        linenos = 'is_hot' if self.is_hot else False
+        options = {'name': self.name} if self.name else {}
         formatter = HtmlFormatter(style=self.style, linenos=linenos,
                                   full=True, **options)
-        self.highlighted = highlight(self.code, lexer, formatter)
+        self.highlighted = highlight(self.goods_brief, lexer, formatter)
         super(Goods, self).save(*args, **kwargs)

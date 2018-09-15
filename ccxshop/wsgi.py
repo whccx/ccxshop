@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # coding: utf-8
 
 # import os
@@ -22,7 +22,7 @@ sys.setdefaultencoding('utf8')
 
 path = '/home/ccx/project/ccxshop-local/ccxshop'  # use your own username here
 if path not in sys.path:
-    sys.path.append(path)
+	sys.path.append(path)
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'ccxshop.settings'
 

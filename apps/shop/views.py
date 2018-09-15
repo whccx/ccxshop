@@ -11,6 +11,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from shop.serializers import UserSerializer
+from django.shortcuts import render
 
 # 开始.
 class GoodsList(generics.ListCreateAPIView):
@@ -26,9 +27,9 @@ class GoodsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Goods.objects.all()
     serializer_class = ShopSerializer
 
-
 #====================================================================
-
+def shop(request):
+    return render(request,'shop/show.html')
 
 @api_view(['GET'])
 def shopin(request):
@@ -37,18 +38,15 @@ def shopin(request):
     """
     if request.method == 'GET':
         show = {
-            '女装':'http://192.168.0.103/shop/goods',
-            '男装':'http://192.168.0.103/shop/goods',
+            '女装':'http://127.0.0.1:8000/api/shop/goods',
+            '男装':'http://127.0.0.1:8000/api/shop/goods',
         }
         return Response(show)
-
-
 #====================================================================
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()

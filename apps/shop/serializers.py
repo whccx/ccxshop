@@ -20,7 +20,8 @@ class ShopSerializer(serializers.HyperlinkedModelSerializer):
             'goods_brief',
             'ship_free',
             'is_hot',
-            'add_time'
+            'language',
+            'style',
         )
 
 # ViewSets 定义view行为.
