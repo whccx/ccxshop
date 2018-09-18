@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>show shop</title>
+    <title>商品页</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/font-awesome/4.5.0/css/font-awesome.min.css" />
 </head>
 <body>
-    商品
+    <div class="col-xs-2">商品</div>
+    <div id="result" class="fa fa-camera-retro fa-2x text-primary col-xs-5"></div>
+    <i class="fa fa-cog fa-spin fa-3x fa-fw text-success col-xs-5"></i>
+    <span class="sr-only">加载中...</span>
+
 </body>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+  $.ajax({
+    method: 'GET',
+    url: "http://127.0.0.1:8000/api/shop/goodsinfo/1" ,
+    dataType: 'json' ,
+    success: function(data){
+      var s = data.name;
+      $("#result").html(s);
+    }
+  });
+</script>
 </html>

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     #===应用模块添加====
     'rest_framework',#Web API
     'shop', #商品
+    'category',#分类
 ]
 
 REST_FRAMEWORK = {

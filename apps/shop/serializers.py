@@ -2,39 +2,61 @@
 from __future__ import unicode_literals
 
 from rest_framework import serializers, viewsets
-from shop.models import Goods
+from shop.models import Goodsinfo,Goodsparameter
 
 # Serializers 定义API.
-class ShopSerializer(serializers.HyperlinkedModelSerializer):
+class GoodsinfoSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         owner = serializers.ReadOnlyField(source='owner.username')
-        model = Goods
+        model = Goodsinfo
+        fields = (
+            'id',
+            'goods_sn',
+            'name',
+            'market_price',
+            'now_price',
+            'goods_brief',
+            'ship_free',
+            'is_hot'
+        )
+
+# ViewSets 定义view行为.
+class GoodsinfoViewSet(viewsets.ModelViewSet):
+    queryset = Goodsinfo.objects.all()
+    serializer_class = GoodsinfoSerializer
+
+#========================================================================
+# Serializers 定义API.
+class GoodsparameterSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        owner = serializers.ReadOnlyField(source='owner.username')
+        model = Goodsparameter
         fields = (
             'id',
             'goods_sn',
             'name',
             'goods_num',
-            'market_price',
-            'now_price',
-            'goods_brief',
-            'ship_free',
-            'is_hot',
-            'language',
-            'style',
+            'goods_brand',
+            'goods_size',
+            'goods_color'
         )
 
 # ViewSets 定义view行为.
-class ShopViewSet(viewsets.ModelViewSet):
-    queryset = Goods.objects.all()
-    serializer_class = ShopSerializer
+class GoodsparameterViewSet(viewsets.ModelViewSet):
+    queryset = Goodsparameter.objects.all()
+    serializer_class = GoodsparameterSerializer
 
+
+#===============================================================
 
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
-    shop = serializers.PrimaryKeyRelatedField(many=True, queryset=Goods.objects.all())
+    Goodsinfo = serializers.PrimaryKeyRelatedField(many=True, queryset=Goodsinfo.objects.all())
+    Goodsparameter = serializers.PrimaryKeyRelatedField(many=True, queryset=Goodsparameter.objects.all())
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'shop')
+        fields = ('id', 'username', 'Goodsinfo','Goodsparameter')
