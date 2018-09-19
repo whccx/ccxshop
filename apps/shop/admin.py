@@ -9,8 +9,8 @@ from shop.models import Goodsinfo,Goodsparameter
 class GoodsinfoAdmin(admin.ModelAdmin):
     # listdisplay设置要显示在列表中的字段（id字段是Django模型的默认主键）
     list_display = (
-        'id', 'goods_sn', 'name', 'add_time','market_price',
-        'now_price','goods_brief','ship_free','is_hot'
+        'id', 'goods_sn', 'name', 'add_time','market_price','goods_img',
+        'now_price','goods_brief','goods_brand','ship_free','is_hot',
     )
 
     # list_per_page设置每页显示多少条记录，默认是100条
@@ -21,7 +21,7 @@ class GoodsinfoAdmin(admin.ModelAdmin):
 
     # list_editable 设置默认可编辑字段
     list_editable = [
-        'name', 'market_price','now_price','ship_free','is_hot',
+        'name', 'market_price','now_price','goods_brand','ship_free','is_hot',
     ]
 
     # 设置哪些字段可以点击进入编辑界面
@@ -32,6 +32,6 @@ class GoodsinfoAdmin(admin.ModelAdmin):
 
 @admin.register(Goodsparameter)
 class GoodsparameterAdmin(admin.ModelAdmin):
-    list_display = ('id', 'goods_sn', 'name', 'add_time','goods_num','goods_brand','goods_size','goods_color')
+    list_display = ('id', 'goods_sn', 'name', 'add_time','goods_num','goods_size','goods_color')
     list_editable = ['name','goods_num','goods_size','goods_color']
     list_display_links = ('goods_sn',)

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 from django.db import models
-
+from tinymce.models import HTMLField
 
 #==============抽象基类=======================================================
 
@@ -30,6 +30,9 @@ class Goodsinfo(Basegoods):
     goods_brief = models.TextField(max_length=500, verbose_name="商品简短描述")
     ship_free = models.BooleanField(default=True, verbose_name="是否包邮")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
+    goods_brand = models.TextField(max_length=50, verbose_name="品牌")
+    goods_img = models.ImageField(upload_to='shop', verbose_name='商品图片')
+    detail = HTMLField(verbose_name='商品详情')
 
     class Meta:
         db_table = 'Goodsinfo'
@@ -60,7 +63,6 @@ class Goodsparameter(Basegoods):
 
     owner = models.ForeignKey('auth.User', related_name='Goodsparameter', on_delete=models.CASCADE)
     goods_num = models.IntegerField(default=0, verbose_name="库存数")
-    goods_brand = models.TextField(max_length=50, verbose_name="品牌")
     goods_size = models.SmallIntegerField(default=small, choices=size_choices, verbose_name="尺码")
     goods_color = models.SmallIntegerField(default=yellow, choices=color_choices, verbose_name="颜色")
 

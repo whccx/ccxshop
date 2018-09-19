@@ -18,7 +18,9 @@ class GoodsinfoSerializer(serializers.HyperlinkedModelSerializer):
             'now_price',
             'goods_brief',
             'ship_free',
-            'is_hot'
+            'is_hot',
+            'goods_brand',
+            'goods_img'
         )
 
 # ViewSets 定义view行为.
@@ -38,7 +40,6 @@ class GoodsparameterSerializer(serializers.HyperlinkedModelSerializer):
             'goods_sn',
             'name',
             'goods_num',
-            'goods_brand',
             'goods_size',
             'goods_color'
         )

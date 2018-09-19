@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',#Web API
     'shop', #商品
     'category',#分类
+    'tinymce',#富文本编辑器
 ]
 
 REST_FRAMEWORK = {
@@ -44,6 +45,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser',
     ],
     #'PAGE_SIZE': 10
+}
+
+TINYMCE_DEFAULT_CONFIG = {
+  'theme': 'advanced',
+  'width': 600,
+  'height': 400,
 }
 
 
