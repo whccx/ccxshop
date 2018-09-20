@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from shop.serializers import UserSerializer
 from django.shortcuts import render
-
 # 开始.
 class GoodsinfoList(generics.ListCreateAPIView):
     """
@@ -84,3 +83,4 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+

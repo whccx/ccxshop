@@ -31,7 +31,7 @@ class Goodsinfo(Basegoods):
     ship_free = models.BooleanField(default=True, verbose_name="是否包邮")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
     goods_brand = models.TextField(max_length=50, verbose_name="品牌")
-    goods_img = models.ImageField(upload_to='shop', verbose_name='商品图片')
+    goods_img = models.ImageField(upload_to='upload', verbose_name='商品图片')
     detail = HTMLField(verbose_name='商品详情')
 
     class Meta:

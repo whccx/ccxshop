@@ -5,23 +5,13 @@ from rest_framework import serializers, viewsets
 from shop.models import Goodsinfo,Goodsparameter
 
 # Serializers 定义API.
-class GoodsinfoSerializer(serializers.HyperlinkedModelSerializer):
+class GoodsinfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         owner = serializers.ReadOnlyField(source='owner.username')
         model = Goodsinfo
-        fields = (
-            'id',
-            'goods_sn',
-            'name',
-            'market_price',
-            'now_price',
-            'goods_brief',
-            'ship_free',
-            'is_hot',
-            'goods_brand',
-            'goods_img'
-        )
+        fields = "__all__"
+
 
 # ViewSets 定义view行为.
 class GoodsinfoViewSet(viewsets.ModelViewSet):
@@ -30,19 +20,12 @@ class GoodsinfoViewSet(viewsets.ModelViewSet):
 
 #========================================================================
 # Serializers 定义API.
-class GoodsparameterSerializer(serializers.HyperlinkedModelSerializer):
+class GoodsparameterSerializer(serializers.ModelSerializer):
 
     class Meta:
         owner = serializers.ReadOnlyField(source='owner.username')
         model = Goodsparameter
-        fields = (
-            'id',
-            'goods_sn',
-            'name',
-            'goods_num',
-            'goods_size',
-            'goods_color'
-        )
+        fields = "__all__"
 
 # ViewSets 定义view行为.
 class GoodsparameterViewSet(viewsets.ModelViewSet):

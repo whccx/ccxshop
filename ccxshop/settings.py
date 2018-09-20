@@ -34,17 +34,22 @@ INSTALLED_APPS = [
     'shop', #商品
     'category',#分类
     'tinymce',#富文本编辑器
+    'django_filters',#过滤器
 ]
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
+    # or allow read-only access for unauthenticated users
     'DEFAULT_PERMISSION_CLASSES': [
         #适用于添加身份验证和权限以后
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAdminUser',
     ],
-    #'PAGE_SIZE': 10
+    #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    #'PAGE_SIZE': 10,
+    # 配置过滤
+    #'DEFAULT_FILTER_BACKENDS': 'django_filters.rest_framework.DjangoFilterBackend',
 }
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -79,6 +84,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'django.core.context_processors.media',#django不同版本的media用法
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -131,7 +138,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-#或相对路径
+#测试环境不设置
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 静态资源路径 (CSS, JavaScript, Images)
@@ -139,3 +146,6 @@ STATIC_URL = '/static/'
 
 # 添加静态资源路径 --------BASE_DIR 是项目的绝对地址
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')#这里不能用列表[]包起来

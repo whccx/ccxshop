@@ -18,10 +18,10 @@
 <script>
   $.ajax({
     method: 'GET',
-    url: "http://127.0.0.1:8000/api/shop/goodsinfo/1" ,
+    url: "../api/shop/goodsinfo/1" ,
     dataType: 'json' ,
     success: function(data){
-      var s = data.name;
+      var s = data.goods_img;
       $("#result").html(s);
     }
   });
