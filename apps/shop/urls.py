@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf.urls import url,include
+from django.conf.urls import url
 from shop import views #导入py文件
 
 app_name = 'shop'

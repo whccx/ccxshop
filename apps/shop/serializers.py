@@ -14,10 +14,9 @@ class GoodsinfoSerializer(serializers.ModelSerializer):
 
 
 # ViewSets 定义view行为.
-class GoodsinfoViewSet(viewsets.ModelViewSet):
-    queryset = Goodsinfo.objects.all()
-    serializer_class = GoodsinfoSerializer
-
+#class GoodsinfoViewSet(viewsets.ModelViewSet):
+    #queryset = Goodsinfo.objects.all()
+    #serializer_class = GoodsinfoSerializer
 #========================================================================
 # Serializers 定义API.
 class GoodsparameterSerializer(serializers.ModelSerializer):
@@ -28,9 +27,9 @@ class GoodsparameterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 # ViewSets 定义view行为.
-class GoodsparameterViewSet(viewsets.ModelViewSet):
-    queryset = Goodsparameter.objects.all()
-    serializer_class = GoodsparameterSerializer
+#class GoodsparameterViewSet(viewsets.ModelViewSet):
+    #queryset = Goodsparameter.objects.all()
+    #serializer_class = GoodsparameterSerializer
 
 
 #===============================================================

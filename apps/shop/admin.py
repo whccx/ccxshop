@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from shop.models import Goodsinfo,Goodsparameter
+
 # Register your models here.
 # 模型的管理器
 @admin.register(Goodsinfo)
