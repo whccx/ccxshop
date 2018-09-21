@@ -20,8 +20,7 @@ urlpatterns = [
     url(r'^$',  views.index),#首页
     url(r'^shop/', include('shop.urls')),#商品url
 
-    url(r'^api/$', views.api), #api
-    url(r'^api/shop/', include('shop.apiurls')), #商品api
+    url(r'^api/', include('api.urls')),  # api
 
 ]
 

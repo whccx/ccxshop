@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import django_filters
-from shop.models import Goodsinfo
+from shop.models import Goodsinfo,Goodsparameter
 
 class Goodsinfofilter(django_filters.rest_framework.FilterSet):
     """
@@ -14,3 +14,11 @@ class Goodsinfofilter(django_filters.rest_framework.FilterSet):
     class Meta:
         model = Goodsinfo
         fields = ['name','market_price','now_price']
+
+class Goodsparameterfilter(django_filters.rest_framework.FilterSet):
+    """
+    自定义过滤类
+    """
+    class Meta:
+        model = Goodsparameter
+        fields = ['name']

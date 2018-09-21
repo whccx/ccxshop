@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #===应用模块添加====
     'rest_framework',#Web API
+    'api',
     'shop', #商品
     'category',#分类
     'tinymce',#富文本编辑器
